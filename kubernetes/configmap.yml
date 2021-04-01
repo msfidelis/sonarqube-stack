@@ -1,0 +1,21 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config
+  namespace: sonarqube
+  labels:
+    app: postgres
+data:
+  POSTGRES_DB: sonar
+  POSTGRES_USER: sonar
+  POSTGRES_PASSWORD: doutorequemtemdoutorado
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: postgres
+  namespace: sonarqube
+type: Opaque
+data:
+  password: bWVkaXVtcG9zdGdyZXM=
