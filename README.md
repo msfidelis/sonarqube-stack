@@ -3,6 +3,7 @@
 ## Setup local stack
 
 ```
+docker-compose up -d postgresql
 docker-compose up --force-recreate
 ```
 

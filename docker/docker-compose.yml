@@ -3,13 +3,17 @@ services:
   sonar:
     image: sonarqube:8.7.1-community
     volumes:
-      - ./sonar.properties:/opt/sonarqube/conf/sonar.properties
       - ./tmp/data:/opt/sonarqube/data
       - ./tmp/logs:/opt/sonarqube/logs
       - ./tmp/extensions:/opt/sonarqube/extensions
     ports:
       - "9000:9000"
-      - "9092:9092"
+    environment: 
+      - SONARQUBE_JDBC_USERNAME=sonar
+      - SONARQUBE_JDBC_PASSWORD=doutorequemtemdoutorado
+      - SONARQUBE_JDBC_URL=jdbc:postgresql://postgresql/sonar
+    depends_on: 
+      - postgresql
   postgresql:
     image: postgres:9.6
     environment:
